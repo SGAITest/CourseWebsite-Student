@@ -1,0 +1,63 @@
+<!-- Template for a new website sub page-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGAI Course - Template</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="top-nav" aria-label="Primary navigation">
+            <a class="brand" href="../index.html">SGAI Course</a>
+            <ul class="menu">
+                <!-- When adding new page, add a new <li> element and class="active" with a link to the page -->
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="course.html">Course Info</a></li>
+                <li><a href="syllabus.html">Syllabus</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a class="active" href="mindmapInstructions.html" >Mind Map Instructions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Password gate: shown first, hidden once the correct password is entered -->
+    <div id="password-gate">
+        <p>This page is for SGAI Course students. Please enter the class password to continue.</p>
+        <input type="password" id="password-input">
+        <button id="password-submit">Enter</button>
+        <p id="password-error" style="display: none;">Incorrect password. Please try again.</p>
+    </div>
+
+    <!-- Real page content: hidden until the password is entered -->
+    <main id="protected-content" style="display: none;">
+        <h1>Mind Map Instructions</h1>
+        <p>Add as needed.</p>
+    </main>
+
+    <script>
+        // Change this to whatever password you want to share with students.
+        var CORRECT_PASSWORD = "bwsi";
+
+        function checkPassword() {
+            var input = document.getElementById("password-input").value;
+            if (input === CORRECT_PASSWORD) {
+                document.getElementById("password-gate").style.display = "none";
+                document.getElementById("protected-content").style.display = "block";
+            } else {
+                document.getElementById("password-error").style.display = "block";
+            }
+        }
+
+        document.getElementById("password-submit").addEventListener("click", checkPassword);
+        document.getElementById("password-input").addEventListener("keyup", function (event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
