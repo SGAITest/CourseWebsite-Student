@@ -104,3 +104,91 @@ p {
 .page-link:focus-visible {
     color: var(--accent-hover);
 }
+
+
+/* --- Dropdown menus (Resources + nested sub-menus) --- */
+
+.menu li {
+    position: relative;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 190px;
+    margin: 0;
+    padding: 8px;
+    padding-top: 16px;
+    list-style: none;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 12px 24px rgba(31, 41, 51, 0.12);
+    z-index: 20;
+}
+
+.menu > li.has-dropdown:hover > .dropdown,
+.menu > li.has-dropdown:focus-within > .dropdown {
+    display: block;
+}
+
+.dropdown li {
+    list-style: none;
+}
+
+.dropdown a {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.dropdown a:hover,
+.dropdown a:focus-visible {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    outline: none;
+}
+
+/* Third-level menu flies out to the right */
+.dropdown .sub-dropdown {
+    top: -8px;
+    left: 100%;
+    padding-left: 16px;
+}
+
+.dropdown li.has-dropdown:hover > .sub-dropdown,
+.dropdown li.has-dropdown:focus-within > .sub-dropdown {
+    display: block;
+}
+
+/* Small arrow hints */
+.menu > li.has-dropdown > a::after {
+    content: "▾";
+    font-size: 0.65em;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.dropdown li.has-dropdown > a::after {
+    content: "▸";
+    float: right;
+    margin-left: 10px;
+    font-size: 0.65em;
+}
+
+.has-dropdown > .dropdown::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 0;
+    right: 0;
+    height: 12px;
+}
